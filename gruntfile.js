@@ -1,3 +1,4 @@
+
 module.exports = function (grunt) {
 
     grunt.initConfig({
@@ -14,15 +15,21 @@ module.exports = function (grunt) {
         browserify: {
             publish: {
                 files: {
-                    'resources/js/routeplanner.js': ['src/js/index.js']
+                    'resources/js/route-planner.js': ['src/js/main.js']
                 },
-                options : {
-                    transform : ['reactify']
+                options: {
+                    transform: ['babelify']
                 }
             }
         },
+        watchify: {
+            app: {
+                src: 'src/js/main.js',
+                dest: 'resources/js/route-planner.js'
+            }
+        },
         sass: {
-            dist: {
+            app: {
                 files: {
                     'resources/css/main.css': 'src/scss/main.scss'
                 }
@@ -44,6 +51,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-browserify');
 
-    grunt.registerTask('default', ['sass','browserify:publish']);
+    grunt.registerTask('build-js', ['browserify:publish']);
+    grunt.registerTask('build-css', ['sass']);
+    grunt.registerTask('default', ['build-js', 'build-css']);
 
 }
