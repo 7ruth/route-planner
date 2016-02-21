@@ -2,6 +2,17 @@
   "name": "routeplanner",
   "version": "2.0.0",
   "description": "Google Maps Route Planner",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vraa/route-planner"
+  },
+  "keywords": [
+    "travel",
+    "route",
+    "plan"
+  ],
+  "homepage": "http://veerasundar.com/route-planner/",
+  "license": "MIT",
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
@@ -13,12 +24,13 @@
     "grunt-browserify": "^4.0.1",
     "grunt-contrib-connect": "^0.11.2",
     "grunt-contrib-sass": "^0.9.2",
-    "grunt-contrib-watch": "^0.6.1"
+    "grunt-contrib-watch": "^0.6.1",
+    "reactify": "^1.1.1"
   },
   "scripts": {
     "start": "grunt connect",
-    "build": "grunt browserify:publish",
+    "build": "grunt",
     "dev": "watchify --ignore-watch=node_modules/** -v -d -t reactify src/js/main.js -o resources/js/route-planner.js"
   },
-  "author": "Veera"
+  "author": "Veera <veera.k.sundar@gmail.com> (http://veerasundar.com)"
 }
